@@ -3,7 +3,6 @@ package project.JanJan.VO;
 public class Snack {
 	private String snackName;
 	private String category;
-	private String brand;
 	private int price;
 	private String snackImg;
 	private String snackDet;
@@ -13,11 +12,10 @@ public class Snack {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Snack(String snackName, String category, String brand, int price, String snackImg, String snackDet) {
+	public Snack(String snackName, String category, int price, String snackImg, String snackDet) {
 		super();
 		this.snackName = snackName;
 		this.category = category;
-		this.brand = brand;
 		this.price = price;
 		this.snackImg = snackImg;
 		this.snackDet = snackDet;
@@ -37,14 +35,6 @@ public class Snack {
 
 	public void setCategory(String category) {
 		this.category = category;
-	}
-
-	public String getBrand() {
-		return brand;
-	}
-
-	public void setBrand(String brand) {
-		this.brand = brand;
 	}
 
 	public int getPrice() {

@@ -33,6 +33,12 @@ public class Alcohol {
 		this.saleYN = saleYN;
 	}
 
+	
+	public Alcohol(String alcoholName) {
+		super();
+		this.alcoholName = alcoholName;
+	}
+
 
 	public String getSaleYN() {
 		return saleYN;

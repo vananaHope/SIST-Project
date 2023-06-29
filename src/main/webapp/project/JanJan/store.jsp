@@ -123,9 +123,10 @@ AlcoholDao dao = new AlcoholDao();
 						class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
 						<%
 						for (Alcohol a : dao.getAllList()) {
+							String al_name = a.getAlcoholName();
 							if (a.getSaleYN().equals("N")) {
 						%>
-						<form action="" method="post">
+						<form action="./item.jsp" method="post">
 						<div class="col mb-5">
 							<div class="card h-100">
 								<!-- Product image-->
@@ -134,7 +135,8 @@ AlcoholDao dao = new AlcoholDao();
 								<div class="card-body p-4">
 									<div class="text-center">
 										<!-- Product name-->
-										<h5 class="fw-bolder"><%=a.getAlcoholName()%></h5>
+										<h5 class="fw-bolder" id = "al_name" name = "al_name">
+										<%=a.getAlcoholName()%></h5>
 										<!-- Product price-->
 										<%=a.getPrice()%>원
 										<p class="text-black-50 p-1"><%=a.getAlcoholDet()%></p>
@@ -143,7 +145,8 @@ AlcoholDao dao = new AlcoholDao();
 								<!-- Product actions-->
 								<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
 									<div class="text-center">
-										<button class="btn btn-outline-dark mt-auto" type="submit">
+										<button class="btn btn-outline-dark mt-auto" 
+										type="submit" name = "al_name" value = "<%=al_name%>">
 											구매하기</button>
 									</div>
 								</div>
@@ -153,7 +156,7 @@ AlcoholDao dao = new AlcoholDao();
 						<%
 						} else if (a.getSaleYN().equals("Y")) {
 						%>
-						<form action="" method="post">
+						<form action="./item.jsp" method="post">
 						<div class="col mb-5">
 							<div class="card h-100">
 								<!-- Sale badge-->
@@ -165,7 +168,8 @@ AlcoholDao dao = new AlcoholDao();
 								<div class="card-body p-4">
 									<div class="text-center">
 										<!-- Product name-->
-										<h5 class="fw-bolder"><%=a.getAlcoholName()%></h5>
+										<h5 class="fw-bolder" id = "al_name" name = "al_name">
+										<%=a.getAlcoholName()%></h5>
 										<!-- Product price-->
 										<span class="text-muted text-decoration-line-through"><%=a.getPrice()%>원</span>
 										<%=(int) (a.getPrice() - (a.getPrice() * 0.2))%>원
@@ -175,7 +179,8 @@ AlcoholDao dao = new AlcoholDao();
 								<!-- Product actions-->
 								<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
 									<div class="text-center">
-										<button class="btn btn-outline-dark mt-auto" type="submit">
+										<button class="btn btn-outline-dark mt-auto" 
+										type="submit" name = "al_name" value = "<%=al_name%>">
 											구매하기</button>
 									</div>
 								</div>

@@ -7,8 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import project.JanJan.DB;
 import project.JanJan.VO.Alcohol;
+import project.JanJan.DB;
 
 public class AlcoholDao {
 	private Connection con;
@@ -97,6 +97,7 @@ public class AlcoholDao {
 	public List<Alcohol> getPriceFilter(int p1, int p2) {
 		List<Alcohol> al = new ArrayList<Alcohol>();
 		String sql = "select * from alcohol where alcohol_price between ? and ?";
+		
 		try {
 	         con = DB.con();
 	         pstmt = con.prepareStatement(sql);
@@ -136,6 +137,7 @@ public class AlcoholDao {
 	public List<Alcohol> getTypeFilter(String s) {
 		List<Alcohol> al = new ArrayList<Alcohol>();
 		String sql = "select * from alcohol where type_name = ?";
+		
 		try {
 	         con = DB.con();
 	         pstmt = con.prepareStatement(sql);
