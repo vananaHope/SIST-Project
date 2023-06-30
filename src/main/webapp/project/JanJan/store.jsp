@@ -49,13 +49,13 @@ AlcoholDao dao = new AlcoholDao();
 							<li><a href="index.html"><img src="./img/logo.png"
 									class="logo"></a></li>
 							<li><a href="sub.html">구독</a></li>
-							<li><a href="store.html">스토어</a></li>
+							<li><a href="store.jsp">스토어</a></li>
 						</ul>
 					</div>
 					<div class="gnbR">
 						<ul>
-							<li><a href="login.html">로그인/회원가입</a></li>
-							<li><a href="bag.html"><img src="./img/bag.png"
+							<li><a href="login.jsp">로그인/회원가입</a></li>
+							<li><a href="bag.jsp"><img src="./img/bag.png"
 									class="bag"></a></li>
 						</ul>
 					</div>

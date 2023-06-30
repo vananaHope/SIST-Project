@@ -11,14 +11,14 @@ String al_name = request.getParameter("al_name");
 if(al_name==null) al_name="";
 
 String re_priS = request.getParameter("re_pri");
-int re_pri = 0;
-if(re_priS!=null && re_priS.equals("")) {
-	re_pri = Integer.parseInt(re_priS);
+int repri=0;
+if(re_priS!=null && !re_priS.equals("")) {
+	repri = Integer.parseInt(re_priS.replaceAll(",",""));
 }
 String resultS = request.getParameter("result");
-int result = 0;
-if(resultS!=null && resultS.equals("")) {
-	result = Integer.parseInt(resultS);
+int result=0;
+if(resultS!=null && !resultS.equals("")) {
+	result = Integer.parseInt(resultS.replaceAll(",",""));
 }
 String prn = "N";
 log(al_name);
@@ -26,7 +26,7 @@ log(al_name);
 if(al_name!=null && !al_name.equals("")) {
 	Bag b = new Bag (
 		result,
-		re_pri,
+		repri,
 		al_name,
 		m1.getId()
 	);

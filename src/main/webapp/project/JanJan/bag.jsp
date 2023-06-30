@@ -16,6 +16,7 @@
 </head>
 <%
 BagDao dao = new BagDao();
+Member m = (Member)session.getAttribute("member");
 %>
 <body>
     <script src="./js/bag.js"></script>
@@ -28,13 +29,13 @@ BagDao dao = new BagDao();
                         <ul>
                             <li><a href="index.html"><img src="./img/logo.png" class="logo"></a></li>
                             <li><a href="sub.html">구독</a></li>
-                            <li><a href="store.html">스토어</a></li>
+                            <li><a href="store.jsp">스토어</a></li>
                         </ul>
                     </div>
                     <div class="gnbR">
                         <ul>
-                            <li><a href="login.html">로그인/회원가입</a></li>
-                            <li><a href="bag.html"><img src="./img/bag.png" class="bag"></a></li>
+                            <li><a href="login.jsp">로그인/회원가입</a></li>
+                            <li><a href="bag.jsp"><img src="./img/bag.png" class="bag"></a></li>
                         </ul>
                     </div>
                 </div>
@@ -51,7 +52,7 @@ BagDao dao = new BagDao();
                     <hr>
 <%
 int tot = 0;
-for (Bag b : dao.getBags()) {
+for (Bag b : dao.getBags(m.getId())) {
 	 tot += b.getTotalPrice();
 %>
 <div class="prod">

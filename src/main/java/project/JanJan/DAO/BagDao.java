@@ -15,14 +15,15 @@ public class BagDao {
     private PreparedStatement pstmt;
     private ResultSet rs;
     
-	public List<Bag> getBags() {
+	public List<Bag> getBags(String id) {
 	    List<Bag> blist = new ArrayList<Bag>();
 	    String sql = "SELECT ALCOHOL_NAME, cnt, TOTAL_PRICE\r\n"
-	    		+ "FROM CART1 ";
+	    		+ "FROM CART1 where memid = ?";
 	    System.out.println("# DB 접속 #");
 	    try {
 	        con = DB.con();
 	        pstmt = con.prepareStatement(sql); 
+	        pstmt.setString(1, id);
 	        rs = pstmt.executeQuery();
 	         while (rs.next()) {
 	        	blist.add(new Bag(
@@ -67,12 +68,4 @@ public class BagDao {
 	    }
 	}
 
-	public static void main(String []asrg) {
-		BagDao dao = new BagDao();
-		for (Bag b : dao.getBags()) {
-			System.out.println(b.getAlcoholName());
-			System.out.println(b.getCnt());
-			System.out.println(b.getTotalPrice());
-		}
-	}
 }
