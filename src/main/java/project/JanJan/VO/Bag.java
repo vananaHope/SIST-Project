@@ -7,10 +7,29 @@ public class Bag {
 	private String snackName;
 	private String alcoholName;
 	private String memId;
+	
 	public Bag() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	public Bag(int cnt, int totalPrice, String snackName, String alcoholName, String memId) {
+		super();
+		this.cnt = cnt;
+		this.totalPrice = totalPrice;
+		this.snackName = snackName;
+		this.alcoholName = alcoholName;
+		this.memId = memId;
+	}
+
+	public Bag(String snackName, String memId, int cnt, int totalPrice) {
+		super();
+		this.cnt = cnt;
+		this.totalPrice = totalPrice;
+		this.alcoholName = snackName;
+		this.memId = memId;
+	}
+	
 	
 	public Bag(int cnt, int totalPrice, String alcoholName, String memId) {
 		super();

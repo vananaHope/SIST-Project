@@ -6,8 +6,10 @@ ADDRESS VARCHAR2(50),
 CONTACT VARCHAR2(30),
 EMAIL VARCHAR2(30)
 );
-
+ 
 INSERT INTO MEMBER_INFO values('vanana','7777','노현우','서울 강서구','010-1111-2345','ggg1234@naver.com');
+INSERT INTO MEMBER_INFO values('dan1792','Dan1792@@','정다은','서울 구로구','010-5105-1792','dan1792@naver.com');
+SELECT * FROM MEMBER_INFO;
 
 CREATE TABLE ALCOHOL(
 ALCOHOL_NAME VARCHAR2(50),
@@ -98,7 +100,9 @@ SNACK_NAME VARCHAR2(50) PRIMARY KEY,
 CATEGORY_NAME VARCHAR2(50),
 SNACK_PRICE NUMBER,
 SNACK_IMG VARCHAR2(100),
-SNACK_DES VARCHAR2(50),
+SNACK_DES VARCHAR2(100),
+SALE_YN VARCHAR2(10),
+EXPDATE DATE,
 FOREIGN KEY (CATEGORY_NAME) REFERENCES SNACK_CATEGORY(CATEGORY_NAME)
 );
 
@@ -110,6 +114,62 @@ INSERT INTO SNACK_CATEGORY VALUES ('국/탕/찌개');
 INSERT INTO SNACK_CATEGORY VALUES ('구이/볶음');
 INSERT INTO SNACK_CATEGORY VALUES ('마른 안주');
 INSERT INTO SNACK_CATEGORY VALUES ('튀김');
+
+SELECT * FROM snack;
+
+DROP TABLE snack;
+DROP TABLE SNACK_CATEGORY ;
+
+SELECT * FROM SNACK_CATEGORY;
+
+INSERT ALL
+INTO SNACK VALUES('갈비탕','국/탕/찌개',11900,'./img/snack/갈비탕.jpg','#든든하고 푸짐한 한 그릇','Y',sysdate + (INTERVAL'2'MONTH))
+INTO SNACK VALUES('찹쌀 진순대국','국/탕/찌개',6000,'./img/snack/찹쌀 진순대국.jpg','#얼큰한 국물에 담긴 진한 풍미','N',sysdate + (INTERVAL'2'MONTH))
+INTO SNACK VALUES('강릉식 짬뽕 순두부찌개','국/탕/찌개',8900,'./img/snack/강릉식 짬뽕 순두부찌개.jpg','#칼칼한 국물 속 풍성한 해물','N',sysdate + (INTERVAL'2'MONTH))
+INTO SNACK VALUES('부산 조방낙지 낙곱새','국/탕/찌개',18300,'./img/snack/부산 조방낙지 낙곱새.jpeg','#집에서 만나는 부산의 별미','N',sysdate + (INTERVAL'2'MONTH))
+INTO SNACK VALUES('우거지 갈비탕','국/탕/찌개',9900,'./img/snack/우거지 갈비탕.jpg','#얼큰하게 즐기는 사미헌 갈비탕','N',sysdate + (INTERVAL'2'MONTH))
+INTO SNACK VALUES('수제 김치찌개','국/탕/찌개',6500,'./img/snack/수제 김치찌개.jpg','#맛있는 김치찌개를 위한 베이스','N',sysdate + (INTERVAL'2'MONTH))
+INTO SNACK VALUES('차돌 된장찌개','국/탕/찌개',7500,'./img/snack/차돌 된장찌개.jpg','#차돌양지가 돋보이는 된장찌개','Y',sysdate + (INTERVAL'2'MONTH))
+INTO SNACK VALUES('샤브샤브 밀키트','국/탕/찌개',15900,'./img/snack/샤브샤브 밀키트.jpg','#매장의 노하우로 완성','N',sysdate + (INTERVAL'2'MONTH))
+INTO SNACK VALUES('송탄식 부대찌개','국/탕/찌개',12900,'./img/snack/송탄식 부대찌개.jpg','#건더기가 푸짐한 부대찌개','N',sysdate + (INTERVAL'2'MONTH))
+INTO SNACK VALUES('밀푀유나베','국/탕/찌개',16900,'./img/snack/밀푀유나베.jpg','#꽃처럼 피어나는 전골 요리','N',sysdate + (INTERVAL'2'MONTH))
+INTO SNACK VALUES('주꾸미 볶음','구이/볶음',7200,'./img/snack/주꾸미 볶음.jpeg','#입안 가득 톡 쏘는 매콤함','N',sysdate + (INTERVAL'2'MONTH))
+INTO SNACK VALUES('민물 양념장어','구이/볶음',28600,'./img/snack/민물 양념장어.jpeg','#집에서 즐기는 든든한 장어구이','N',sysdate + (INTERVAL'2'MONTH))
+INTO SNACK VALUES('스테이크 키트','구이/볶음',19800,'./img/snack/스테이크 키트.jpg','#묵직함과 산뜻함의 공존','N',sysdate + (INTERVAL'2'MONTH))
+INTO SNACK VALUES('찹스테이크','구이/볶음',15900,'./img/snack/찹스테이크.jpeg','#파인애플이 들어가 달큰한 맛','Y',sysdate + (INTERVAL'2'MONTH))
+INTO SNACK VALUES('마라샹궈','구이/볶음',7900,'./img/snack/마라샹궈.jpg','#자꾸 당기는 그 매력 그대로','N',sysdate + (INTERVAL'2'MONTH))
+INTO SNACK VALUES('치즈 춘천 닭갈비 떡볶이','구이/볶음',13200,'./img/snack/눈꽃치즈 춘천 닭갈비 떡볶이.jpg','#눈꽃치즈를 솔솔 얹어 먹는','N',sysdate + (INTERVAL'2'MONTH))
+INTO SNACK VALUES('우삼겹 숙주 볶음','구이/볶음',9900,'./img/snack/우삼겹 숙주 볶음.jpg','#우삼겹과 숙주의 콜라보','N',sysdate + (INTERVAL'2'MONTH))
+INTO SNACK VALUES('병천식 순대곱창볶음','구이/볶음',16800,'./img/snack/병천식 순대곱창볶음.jpg','#간편하게 만나는 충천도의 맛','N',sysdate + (INTERVAL'2'MONTH))
+INTO SNACK VALUES('스키야키','구이/볶음',17900,'./img/snack/스키야키.jpg','#수란에 찍어 먹는 일품 요리','N',sysdate + (INTERVAL'2'MONTH))
+INTO SNACK VALUES('전가복','구이/볶음',19900,'./img/snack/전가복.jpg','#전복과 새우가 들어간','N',sysdate + (INTERVAL'2'MONTH))
+INTO SNACK VALUES('매콤한 황태','마른 안주',8900,'./img/snack/매콤한 황태.jpg','#감칠맛을 입은 고소한 황태','N',sysdate + (INTERVAL'2'MONTH))
+INTO SNACK VALUES('속살 담은 손질 황태채','마른 안주',12900,'./img/snack/속살 담은 손질 황태채.jpg','#가늘게 찢어 담은 황태','N',sysdate + (INTERVAL'2'MONTH))
+INTO SNACK VALUES('바나나칩','마른 안주',8900,'./img/snack/바나나칩.jpg','#바삭바삭 달콤한 과일칩','N',sysdate + (INTERVAL'2'MONTH))
+INTO SNACK VALUES('인생 노가리 (마른대구)','마른 안주',5990,'./img/snack/인생 노가리.jpg','#고소하고 담백한 안주','Y',sysdate + (INTERVAL'2'MONTH))
+INTO SNACK VALUES('칼 맞은 오징어','마른 안주',9800,'./img/snack/칼 맞은 오징어.jpg','#간편히 즐기는 건오징어 몸통','Y',sysdate + (INTERVAL'2'MONTH))
+INTO SNACK VALUES('반건조 한치','마른 안주',9900,'./img/snack/반건조 한치.jpg','#촉촉하고 쫄깃한 식감','N',sysdate + (INTERVAL'2'MONTH))
+INTO SNACK VALUES('리얼 먹태랑 땅콩','마른 안주',4990,'./img/snack/리얼 먹태랑 땅콩.jpg','#부담없이 즐기는 간편 안주','Y',sysdate + (INTERVAL'2'MONTH))
+INTO SNACK VALUES('삼천포 전통 명엽채','마른 안주',6900,'./img/snack/삼천포 전통 명엽채.jpg','#삼천포에서 갓 잡아온 명엽채','N',sysdate + (INTERVAL'2'MONTH))
+INTO SNACK VALUES('오동통 담백한 쥐포','마른 안주',15900,'./img/snack/오동통 담백한 쥐포.jpg','#매실 분말로 맛을 더한','N',sysdate + (INTERVAL'2'MONTH))
+INTO SNACK VALUES('동해바다 반건조 오징어','마른 안주',7900,'./img/snack/동해바다 반건조 오징어.jpg','#찬 바람에 쫄깃하게 말린','N',sysdate + (INTERVAL'2'MONTH))
+INTO SNACK VALUES('통등심 돈까스','튀김',6100,'./img/snack/간편하게 바삭, 통등심 돈까스.jpg','#씹는 맛이 살아있는 돈까스','Y',sysdate + (INTERVAL'2'MONTH))
+INTO SNACK VALUES('김말이','튀김',6600,'./img/snack/김말이.jpg','#깻잎의 향긋함이 더해진','N',sysdate + (INTERVAL'2'MONTH))
+INTO SNACK VALUES('슈스트링 포테이토 프라이','튀김',4700,'./img/snack/슈스트링 포테이토 프라이.jpg','#바삭하고 짭짤한 감자튀김','N',sysdate + (INTERVAL'2'MONTH))
+INTO SNACK VALUES('베이징풍 찹쌀 탕수육','튀김',8900,'./img/snack/베이징풍 찹쌀 탕수육.jpeg','#타피오카 가루의 쫀득한 튀김옷','N',sysdate + (INTERVAL'2'MONTH))
+INTO SNACK VALUES('석관동 모듬 튀김','튀김',4000,'./img/snack/석관동 모듬 튀김.jpg','#소용량 모둠 튀김','N',sysdate + (INTERVAL'2'MONTH))
+INTO SNACK VALUES('멘보샤','튀김',12500,'./img/snack/멘보샤.jpeg','#바삭한 식빵과 새우의 풍미','N',sysdate + (INTERVAL'2'MONTH))
+INTO SNACK VALUES('닭강정','튀김',14500,'./img/snack/닭강정.jpg','#속초에서 만났던 명물 닭강정','N',sysdate + (INTERVAL'2'MONTH))
+INTO SNACK VALUES('에어프라이어 순살 치킨','튀김',16600,'./img/snack/에어프라이어 순살 치킨.jpg','#라이스볼의 크런치식감을 더한','N',sysdate + (INTERVAL'2'MONTH))
+INTO SNACK VALUES('용가리치킨','튀김',13800,'./img/snack/용가리치킨.jpeg','#다섯 가지 공룡 모양 너겟','Y',sysdate + (INTERVAL'2'MONTH))
+INTO SNACK VALUES('치킨너겟','튀김',10700,'./img/snack/치킨너겟.jpeg','#보고 먹는 재미를 한 번에','Y',sysdate + (INTERVAL'2'MONTH))
+SELECT * FROM dual;
+
+SELECT * FROM SNACK
+WHERE snack_name = ?
+;
+
+INSERT INTO snack values('어묵탕','탕/국/찌개','비비고',10000,'/source','어묵탕입니다.');
 
 CREATE TABLE CART (
 CART_NUM VARCHAR2(50) PRIMARY KEY,
@@ -123,6 +183,10 @@ FOREIGN KEY (ALCOHOL_NAME) REFERENCES ALCOHOL(ALCOHOL_NAME),
 FOREIGN KEY (MEMID) REFERENCES MEMBER_INFO(MEMID)
 );
 
+INSERT INTO cart VALUES ('C-'||cart_seq.nextval, 1, 13000, '갈비탕',null, 'vanana');
+INSERT INTO cart VALUES ('C-'||cart_seq.nextval, 1, 13000, null,'고흥유자주', 'vanana');
+
+/*임시테이블*/
 CREATE TABLE CART1 (
 CART_NUM VARCHAR2(50) PRIMARY KEY,
 CNT NUMBER,
@@ -132,13 +196,31 @@ MEMID varchar2(30),
 FOREIGN KEY (MEMID) REFERENCES MEMBER_INFO(MEMID),
 FOREIGN KEY (ALCOHOL_NAME) REFERENCES ALCOHOL(ALCOHOL_NAME)
 );
-INSERT INTO cart1 VALUES ('C-'||cart_seq.nextval, 1, 13000, '고흥유자주', 'vanana');
-INSERT INTO cart1 VALUES ('C-'||cart_seq.nextval, 1, 5900, '신애유자', 'vanana');
+
+CREATE TABLE CART2 (
+CART_NUM VARCHAR2(50) PRIMARY KEY,
+CNT NUMBER,
+TOTAL_PRICE NUMBER,
+SNACK_NAME VARCHAR2(50),
+MEMID varchar2(30),
+FOREIGN KEY (MEMID) REFERENCES MEMBER_INFO(MEMID),
+FOREIGN KEY (SNACK_NAME) REFERENCES SNACK(SNACK_NAME)
+);
 
 CREATE SEQUENCE cart_seq 
 START WITH 1;
 
+SELECT * FROM cart1;
+
+INSERT INTO cart2 VALUES ('C-'||cart_seq.nextval, 1, 13000, '갈비탕', 'vanana');
+INSERT INTO cart1 VALUES ('C-'||cart_seq.nextval, 1, 13000, '매실원주', 'vanana');
+-- INSERT INTO cart1 VALUES ('C-'||cart_seq.nextval, ?,?,?,?)
+
+SELECT * FROM cart1;
+
 DROP SEQUENCE cart_seq;
+DROP TABLE cart1;
+DROP TABLE cart2;
 
 CREATE TABLE SUB_PRODUCT (
 SUB_PRODNUM VARCHAR2(50) PRIMARY KEY,

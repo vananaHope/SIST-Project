@@ -19,4 +19,24 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>AlcoholServlet</display-name>
+    <servlet-name>AlcoholServlet</servlet-name>
+    <servlet-class>project.JanJan.AlcoholServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AlcoholServlet</servlet-name>
+    <url-pattern>/AlcoholServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SnackServlet</display-name>
+    <servlet-name>SnackServlet</servlet-name>
+    <servlet-class>project.JanJan.SnackServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SnackServlet</servlet-name>
+    <url-pattern>/SnackServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

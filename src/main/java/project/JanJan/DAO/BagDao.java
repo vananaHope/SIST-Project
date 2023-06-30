@@ -17,8 +17,8 @@ public class BagDao {
     
 	public List<Bag> getBags(String id) {
 	    List<Bag> blist = new ArrayList<Bag>();
-	    String sql = "SELECT ALCOHOL_NAME, cnt, TOTAL_PRICE\r\n"
-	    		+ "FROM CART1 where memid = ?";
+	    String sql = "SELECT ALCOHOL_NAME, SNACK_NAME, cnt, TOTAL_PRICE\r\n"
+	    		+ "FROM CART where memid = ?";
 	    System.out.println("# DB 접속 #");
 	    try {
 	        con = DB.con();
@@ -29,7 +29,9 @@ public class BagDao {
 	        	blist.add(new Bag(
 	        			rs.getInt("CNT"),
 	        			rs.getInt("TOTAL_PRICE"),
-	        			rs.getString("ALCOHOL_NAME")
+	        			rs.getString("ALCOHOL_NAME"),
+	        			rs.getString("SNACK_NAME")
+	        			
 	            ));
 	        }
 	    } catch (SQLException e) {
@@ -43,7 +45,7 @@ public class BagDao {
 	}
 	// INSERT INTO cart1 VALUES ('C-'||cart_seq.nextval, 1, 5900, '신애유자', 'vanana')
 	public void insBag(Bag ins) {
-		String sql = "INSERT INTO cart1 VALUES ('C-'||cart_seq.nextval, ?, ?, ?, ?)";
+		String sql = "INSERT INTO cart VALUES ('C-'||cart_seq.nextval, ?, ?, ?, ?)";
 		
 	    try {
 	        con = DB.con();

@@ -54,6 +54,7 @@ Member m = (Member)session.getAttribute("member");
 int tot = 0;
 for (Bag b : dao.getBags(m.getId())) {
 	 tot += b.getTotalPrice();
+	 if(b.getAlcoholName()!=null){
 %>
 <div class="prod">
 	<input type="checkbox" class="prodCh" name="agree">
@@ -73,7 +74,25 @@ for (Bag b : dao.getBags(m.getId())) {
 
 <!-- tot += b.price*b.cnt -->
 <!-- %> 닫힘 -->
-<%} %>
+<%
+}else if(b.getSnackName()!=null) {%>
+<div class="prod">
+	<input type="checkbox" class="prodCh" name="agree">
+	<p id="prodName" >
+		<%=b.getAlcoholName()%>
+		</p>
+	<!--b.name-->
+</div>
+<div class="bill">
+	<input type="button" value="－" onclick='count("minus")'>
+	<p id="result"><%=b.getCnt()%></p>
+	<!--b.cnt%>-->
+	<input type="button" value="＋" onclick='count("plus")'>
+	<p class="price"><%=b.getTotalPrice()%>원</p>
+	<!--<b.price%>-->
+</div>
+<%} 
+}%>
 
                     <div>
                         <h2>결제 정보</h2>
