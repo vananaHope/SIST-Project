@@ -7,8 +7,9 @@
 /* session.setAttribute("member",new Member("vanana","!Rho7777")); */
 Member m1 = (Member)session.getAttribute("member");
 
-String al_name = request.getParameter("al_name");
-if(al_name==null) al_name="";
+String s_name = request.getParameter("s_name");
+if(s_name==null) s_name="";
+log(s_name);
 
 String re_priS = request.getParameter("re_pri");
 int repri=0;
@@ -22,17 +23,17 @@ if(resultS!=null && !resultS.equals("")) {
 }
 String prn = "N";
 
-if(al_name!=null && !al_name.equals("")) {
-	Bag b = new Bag (
-		result,
-		repri,
-		al_name,
-		m1.getId()
-	);
+//String snackName, String memId, int cnt, int totalPrice
+if(s_name!=null && !s_name.equals("")){
+	Bag bg = new Bag (
+			result,
+			repri,
+			s_name,
+			m1.getId()
+		);	
 	BagDao dao = new BagDao();
-	dao.insBag(b);
-	prn = "Y";
+	dao.insBag(bg);
+	prn="Y";
 }
-
 %>
 <%=prn%>

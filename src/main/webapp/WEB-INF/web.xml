@@ -39,4 +39,24 @@
     <servlet-name>SnackServlet</servlet-name>
     <url-pattern>/SnackServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>schId</display-name>
+    <servlet-name>schId</servlet-name>
+    <servlet-class>project.JanJan.servlet.schId</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>schId</servlet-name>
+    <url-pattern>/schId</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>schPwd</display-name>
+    <servlet-name>schPwd</servlet-name>
+    <servlet-class>project.JanJan.servlet.schPwd</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>schPwd</servlet-name>
+    <url-pattern>/schPwd</url-pattern>
+  </servlet-mapping>
 </web-app>

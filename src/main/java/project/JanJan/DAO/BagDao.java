@@ -17,7 +17,7 @@ public class BagDao {
     
 	public List<Bag> getBags(String id) {
 	    List<Bag> blist = new ArrayList<Bag>();
-	    String sql = "SELECT ALCOHOL_NAME, SNACK_NAME, cnt, TOTAL_PRICE\r\n"
+	    String sql = "SELECT product_name, cnt, TOTAL_PRICE\r\n"
 	    		+ "FROM CART where memid = ?";
 	    System.out.println("# DB 접속 #");
 	    try {
@@ -29,8 +29,7 @@ public class BagDao {
 	        	blist.add(new Bag(
 	        			rs.getInt("CNT"),
 	        			rs.getInt("TOTAL_PRICE"),
-	        			rs.getString("ALCOHOL_NAME"),
-	        			rs.getString("SNACK_NAME")
+	        			rs.getString("PRODUCT_NAME")
 	        			
 	            ));
 	        }
@@ -45,7 +44,8 @@ public class BagDao {
 	}
 	// INSERT INTO cart1 VALUES ('C-'||cart_seq.nextval, 1, 5900, '신애유자', 'vanana')
 	public void insBag(Bag ins) {
-		String sql = "INSERT INTO cart VALUES ('C-'||cart_seq.nextval, ?, ?, ?, ?)";
+		String sql = "INSERT INTO CART(cart_num,cnt,total_price,product_name,memid)"
+				+ "VALUES ('C-'||cart_seq.nextval, ?, ?, ?, ?)";
 		
 	    try {
 	        con = DB.con();
@@ -53,7 +53,7 @@ public class BagDao {
 	        pstmt = con.prepareStatement(sql);
 	        pstmt.setInt(1, ins.getCnt());
 	        pstmt.setInt(2, ins.getTotalPrice());
-	        pstmt.setString(3, ins.getAlcoholName());
+	        pstmt.setString(3, ins.getProductName());
 	        pstmt.setString(4, ins.getMemId());
 	        int result = pstmt.executeUpdate();
 	        if (result == 1) {

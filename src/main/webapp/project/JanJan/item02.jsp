@@ -17,12 +17,12 @@
     	function ajaxCart(){
     		var result = document.querySelector(".cnt #result").innerText
     		var repri = document.querySelector(".box_pri #re_pri").innerText
-    		var al_name = document.querySelector("#s_name").innerText
+    		var s_name = document.querySelector("#s_name").innerText
     		console.log(s_name);
     		var qStr = "result="+result+"&re_pri="+repri+"&s_name="+s_name
     		
     		var xhr = new XMLHttpRequest()
-    		xhr.open("post","bagData.jsp",true)
+    		xhr.open("post","bagData2.jsp",true)
     		xhr.setRequestHeader("Content-Type",
 					"application/x-www-form-urlencoded")
 			xhr.send(qStr)
