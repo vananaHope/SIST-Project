@@ -3,6 +3,8 @@
     import="project.JanJan.DAO.*"
     import="project.JanJan.VO.*"
     %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>       
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,12 +12,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-	
+	<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/global.css">
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/login.css">
     <title>잔잔</title>
+    <script>
+    function warning(check){
+    	if(check==''){
+    		if(confirm("로그인이 필요합니다. 로그인 하시겠습니까?")){
+    			location.href="login.jsp"
+    		}
+    	}else{
+    		location.href="bag.jsp"
+    	}
+    }
+    </script>
 </head>
 <body>
     <div class="wrap">
@@ -27,13 +40,15 @@
                         <ul>
                             <li><a href="index.html"><img src="./img/logo.png" class="logo"></a></li>
                             <li><a href="sub.html">구독</a></li>
-                            <li><a href="store.html">스토어</a></li>
+                            <li><a href="store.jsp">스토어</a></li>
                         </ul>
                     </div>
                     <div class="gnbR">
                         <ul>
-                            <li><a href="login.html">로그인/회원가입</a></li>
-                            <li><a href="bag.html"><img src="./img/bag.png" class="bag"></a></li>
+                            <li><a href="login.jsp">로그인/회원가입</a></li>
+                            <c:set var="mem" value="${member}"/>
+							<li><img src="./img/bag.png" onclick="warning('${mem.id}')"
+									class="bag"></li>
                         </ul>
                     </div>
                 </div>

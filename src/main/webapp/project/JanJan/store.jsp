@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" import="project.JanJan.VO.Alcohol"
 	import="project.JanJan.DAO.AlcoholDao" import="java.util.*"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>   	
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,6 +13,7 @@
 <link rel="stylesheet" href="./css/store.css">
 <link rel="stylesheet" href="./css/reset.css">
 <link rel="stylesheet" href="./css/global.css">
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <title>잔잔</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
@@ -32,6 +35,15 @@ function filter() {
 	var page = "janjan_storedata.jsp?filter-price="+filter_price+"&filter-type="+filter_type
 	listObj.innerHTML = getSync(page)
 	
+}
+function warning(check){
+	if(check==''){
+		if(confirm("로그인이 필요합니다. 로그인 하시겠습니까?")){
+			location.href="login.jsp"
+		}
+	}else{
+		location.href="bag.jsp"
+	}
 }
 </script>
 </head>
@@ -55,8 +67,9 @@ AlcoholDao dao = new AlcoholDao();
 					<div class="gnbR">
 						<ul>
 							<li><a href="login.jsp">로그인/회원가입</a></li>
-							<li><a href="bag.jsp"><img src="./img/bag.png"
-									class="bag"></a></li>
+							<c:set var="mem" value="${member}"/>
+							<li><img src="./img/bag.png" onclick="warning('${mem.id}')"
+									class="bag"></li>
 						</ul>
 					</div>
 				</div>

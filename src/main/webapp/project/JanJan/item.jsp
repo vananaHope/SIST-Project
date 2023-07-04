@@ -3,6 +3,8 @@
     import ="project.JanJan.VO.Alcohol"
     import = "project.JanJan.DAO.ItemDao"
     import="java.util.List"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>       
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,6 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/global.css">    <title>잔잔</title>
     <link rel="stylesheet" href="./css/item.css">
@@ -36,6 +39,15 @@
     			}
     		}		
     	}
+    	function warning(check){
+    		if(check==''){
+    			if(confirm("로그인이 필요합니다. 로그인 하시겠습니까?")){
+    				location.href="login.jsp"
+    			}
+    		}else{
+    			location.href="bag.jsp"
+    		}
+    	}
     </script>
 </head>
 <body>
@@ -54,7 +66,9 @@
                     <div class="gnbR">
                         <ul>
                             <li><a href="login.jsp">로그인/회원가입</a></li>
-                            <li><a href="bag.jsp"><img src="./img/bag.png" class="bag"></a></li>
+                            <c:set var="mem" value="${member}"/>
+							<li><img src="./img/bag.png" onclick="warning('${mem.id}')"
+									class="bag"></li>
                         </ul>
                     </div>
                 </div>
@@ -206,7 +220,7 @@
                         <img class = "del_img" src = "./img/item/delivery.png">
                     </div>
                     <div class = "but01">
-                        <button class = "but_det01" type="button" onclick="ajaxCart()"><img class = "but_img" src = "./img/item/bag_full.png">장바구니</button>
+                        <button class = "but_det01" type="button" onclick="ajaxCart(); warning('${mem.id}');"><img class = "but_img" src = "./img/item/bag_full.png">장바구니</button>
                     </div>
                     <div class = "but01">
                         <button class = "but_det02"><img class = "but_img" src = "./img/item/gift.png">선물하기</button>

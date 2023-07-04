@@ -2,13 +2,15 @@ package project.JanJan;
 
 import java.io.IOException;
 
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
-import project.JanJan.VO.*;
-import project.JanJan.DAO.*;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import project.JanJan.DAO.BagDao;
+import project.JanJan.VO.Bag;
+import project.JanJan.VO.Member;
 
 /**
  * Servlet implementation class BagServlet

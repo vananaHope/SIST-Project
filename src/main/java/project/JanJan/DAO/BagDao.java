@@ -44,6 +44,7 @@ public class BagDao {
 	}
 	// INSERT INTO cart1 VALUES ('C-'||cart_seq.nextval, 1, 5900, '신애유자', 'vanana')
 	public void insBag(Bag ins) {
+		
 		String sql = "INSERT INTO CART(cart_num,cnt,total_price,product_name,memid)"
 				+ "VALUES ('C-'||cart_seq.nextval, ?, ?, ?, ?)";
 		
