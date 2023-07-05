@@ -1,23 +1,29 @@
-.bgImg{   
-    height: 980px;
-    background-image: url(/project/JanJan/img/Bg2.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-}
 .chooseMenu{
     margin-top: 100px;
 }
 .bgInner{
     display: flex;
     align-items: center;
+}
+.bgImg{
+    width: 300px;
+}
+.ment{
+    position: absolute;
+    margin-left: 540px;
+   
 
 }
-h1{
-    position: absolute;
-    padding-left: 945px;
-    color: white;
-    font-size: 70px;
+.ment > h1{
+    color: black;
+    font-size: 110px;
     font-weight: 900;
+}
+.ment > h3{
+    color: rgb(88, 88, 88);
+    font-size: 30px;
+    letter-spacing:140%;
+    margin-top: 30px;
 }
 .infoBox{
     margin-top: 150px;

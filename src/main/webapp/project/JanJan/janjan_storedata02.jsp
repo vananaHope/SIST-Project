@@ -13,7 +13,7 @@ if(filterTypeS==null) filterTypeS="";
 List<Snack> snList = new ArrayList<Snack>();
 
 if (filterPriceS.equals("") && filterTypeS.equals("")) {
-	snList = dao.getAllList_s(); 
+	snList = dao.getAllList_s();
 } else if (filterPriceS != null && filterTypeS.equals("")) {
 	String[] arry = filterPriceS.split(",");
 	int price1 = Integer.parseInt(arry[0]);
@@ -43,7 +43,7 @@ for (Snack s : snList) {
 				<!-- Product name-->
 				<h5 class="fw-bolder" name = "s_name"><%=s.getSnack_name()%></h5>
 				<!-- Product price-->
-				<%=s.getSnack_price()%>원
+				<%=String.format("%,d",s.getSnack_price())%>원
 				<p class="text-black-50 p-1"><%=s.getSnack_des()%></p>
 			</div>
 		</div>
@@ -75,8 +75,9 @@ for (Snack s : snList) {
 				<!-- Product name-->
 				<h5 class="fw-bolder" name = "s_name"><%=s.getSnack_name()%></h5>
 				<!-- Product price-->
-				<span class="text-muted text-decoration-line-through"><%=s.getSnack_price()%>원</span>
-				<%=(int) (s.getSnack_price() - (s.getSnack_price() * ranRate))%>원
+				<span class="text-muted text-decoration-line-through"><%=String.format("%,d",s.getSnack_price())%>원</span>
+				<%int pri =  (int) (s.getSnack_price() - (s.getSnack_price() * ranRate));%>
+				<%=String.format("%,d",pri)%>원
 				<p class="text-black-50 p-1"><%=s.getSnack_des()%></p>
 			</div>
 		</div>

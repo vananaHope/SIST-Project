@@ -13,7 +13,7 @@ public class Member {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
+	
 	public Member(String id, String pwd) {
 		super();
 		this.id = id;
@@ -43,18 +43,6 @@ public class Member {
 		this.contact = contact;
 	}
 
-	public String getEmail() {
-		return email;
-	}
-
-	public int getAuth() {
-		return auth;
-	}
-
-	public void setAuth(int auth) {
-		this.auth = auth;
-	}
-
 	public Member(String id, String pwd, String name, String address, String contact, String email, int auth) {
 		super();
 		this.id = id;
@@ -65,11 +53,23 @@ public class Member {
 		this.email = email;
 		this.auth = auth;
 	}
+	
+	public int getAuth() {
+		return auth;
+	}
+
+	public void setAuth(int auth) {
+		this.auth = auth;
+	}
+
+	public String getEmail() {
+		return email;
+	}
 
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
+	
 	public String getId() {
 		return id;
 	}

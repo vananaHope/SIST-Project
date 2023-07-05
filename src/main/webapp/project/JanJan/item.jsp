@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="./css/global.css">    <title>잔잔</title>
     <link rel="stylesheet" href="./css/item.css">
     <script>
-    	function ajaxCart(){
+     	function ajaxCart(check){
     		var result = document.querySelector(".cnt #result").innerText
     		var repri = document.querySelector(".box_pri #re_pri").innerText
     		var al_name = document.querySelector("#al_name").innerText
@@ -37,9 +37,8 @@
     					alert("장바구니 등록 성공")
     				}
     			}
-    		}		
-    	}
-    	function warning(check){
+    			
+    		}
     		if(check==''){
     			if(confirm("로그인이 필요합니다. 로그인 하시겠습니까?")){
     				location.href="login.jsp"
@@ -65,8 +64,12 @@
                     </div>
                     <div class="gnbR">
                         <ul>
-                            <li><a href="login.jsp">로그인/회원가입</a></li>
-                            <c:set var="mem" value="${member}"/>
+							<c:set var="mem" value="${member}"/>
+                        	<c:set var="msg" value="로그인/회원가입"/>
+                        	<c:if test="${not empty mem}">
+                            	<c:set var="msg" value="${mem.name}님"/>
+                            </c:if>	
+                            <li><a href="login.jsp">${msg}</a></li>
 							<li><img src="./img/bag.png" onclick="warning('${mem.id}')"
 									class="bag"></li>
                         </ul>
@@ -220,7 +223,7 @@
                         <img class = "del_img" src = "./img/item/delivery.png">
                     </div>
                     <div class = "but01">
-                        <button class = "but_det01" type="button" onclick="ajaxCart(); warning('${mem.id}');"><img class = "but_img" src = "./img/item/bag_full.png">장바구니</button>
+                        <button class = "but_det01" type="button" onclick="ajaxCart('${mem.id}')"><img class = "but_img" src = "./img/item/bag_full.png">장바구니</button>
                     </div>
                     <div class = "but01">
                         <button class = "but_det02"><img class = "but_img" src = "./img/item/gift.png">선물하기</button>

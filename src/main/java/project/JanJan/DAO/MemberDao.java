@@ -38,7 +38,7 @@ public class MemberDao {
 	}
 	// 잔잔 회원가입 메서드
 	public void join(Member ins) {
-		String sql="INSERT INTO MEMBER_INFO values(?,?,?,?,?,?,NULL)";
+		String sql="INSERT INTO MEMBER_INFO values(?,?,?,?,?,?,0)";
 		try {
 			con = DB.con();
 			con.setAutoCommit(false);
@@ -69,10 +69,10 @@ public class MemberDao {
 			DB.close(rs, pstmt, con);
 		}
 	}
-	// 잔잔 로그인 메서드
+	// 잔잔 로그인 메서드 String id, String pwd, String name, String address, String contact, String email, int auth
 	public Member login(String id, String pwd) {
 		Member mem = null;
-		String sql = "SELECT MEMID,PASSWORD\r\n"
+		String sql = "SELECT *\r\n"
 				+ "FROM MEMBER_info\r\n"
 				+ "WHERE MEMID=? AND PASSWORD=?";
 		try {
@@ -84,7 +84,12 @@ public class MemberDao {
 			if(rs.next()) {
 				mem = new Member(
 					rs.getString("MEMID"),
-					rs.getString("PASSWORD")
+					rs.getString("PASSWORD"),
+					rs.getString("NAME"),
+					rs.getString("address"),
+					rs.getString("contact"),
+					rs.getString("email"),
+					rs.getInt("auth")
 				);
 			}
 		} catch (SQLException e) {
@@ -96,8 +101,8 @@ public class MemberDao {
 		}
 		return mem;
 	}// 잔잔 관리자 유효성 체크 메서드
-	public boolean authCk(String id, String pwd) {
-		boolean mem = false ;
+	/*public Member authCk(String id, String pwd) {
+		Member mem = null ;
 		String sql = "SELECT auth\r\n"
 				+ "FROM MEMBER_info\r\n"
 				+ "WHERE MEMID=? AND PASSWORD=?";
@@ -107,7 +112,9 @@ public class MemberDao {
 			pstmt.setString(1, id);
 			pstmt.setString(2, pwd);
 			rs = pstmt.executeQuery();
-			mem=rs.next();
+			if(rs.next()) {
+				mem = new Member(rs.getInt("auth"));
+			}
 		} catch (SQLException e) {
 			System.out.println("sql예외:"+e.getMessage());
 		} catch (Exception e) {
@@ -116,7 +123,7 @@ public class MemberDao {
 			DB.close(rs, pstmt, con);
 		}
 		return mem;
-	}
+	}*/
 	// 아이디 중복확인 Dao 메서드
 	public Member checkId(String id) {
 		Member mem = null;

@@ -5,13 +5,14 @@ NAME VARCHAR2(20),
 ADDRESS VARCHAR2(50),
 CONTACT VARCHAR2(30),
 EMAIL VARCHAR2(30),
-AUTH NUMBER
+AUTH number
 );
  
 DROP TABLE MEMBER_INFO;
 
-INSERT INTO MEMBER_INFO values('vanana','7777','노현우','서울 강서구','010-1111-2345','ggg1234@naver.com',1);
-INSERT INTO MEMBER_INFO values('dan1792','Dan1792@@','정다은','서울 구로구','010-5105-1792','dan1792@naver.com',NULL);
+INSERT INTO MEMBER_INFO values('vanana','!Rho7777','노현우','서울 강서구','010-1111-2345','ggg1234@naver.com',1);
+INSERT INTO MEMBER_INFO values('dan1792','Dan1792@@','정다은','서울 구로구','010-5105-1792','dan1792@naver.com',0);
+INSERT INTO MEMBER_INFO values('hong1234','!Rho@@1234','홍길동','서울 구로구','010-5105-1792','dan1792@naver.com',0);
 
 SELECT * FROM MEMBER_INFO;
 
@@ -183,6 +184,8 @@ PRODUCT_NAME VARCHAR2(50),
 MEMID varchar2(30),
 FOREIGN KEY (MEMID) REFERENCES MEMBER_INFO(MEMID)
 );
+
+DROP TABLE CART;
 
 INSERT INTO cart VALUES ('C-'||cart_seq.nextval, 1, 13000, '갈비탕', 'vanana');
 INSERT INTO cart VALUES ('C-'||cart_seq.nextval, 1, 16000, '고흥유자주', 'vanana');

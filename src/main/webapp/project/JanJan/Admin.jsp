@@ -53,7 +53,7 @@
 </script>
 <body>
 <div class="container mt-3">
-		<h2>제품 등록/수정/삭제</h2>
+		<h2>제품 관리</h2>
 		<div class="mb-3 mt-3">
 			<label for="title">제품명:</label> <input type="text"
 				onkeyup="prd13()" class="form-control" id="title"

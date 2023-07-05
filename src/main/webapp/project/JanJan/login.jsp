@@ -73,8 +73,12 @@ if (id != "" && pwd != "") {
         Member member = dao.login(id, pwd);
         if (member != null) {
             // 로그인 성공
-            session.setAttribute("member", member);// 로그인 정보 저장
-            response.sendRedirect("index.html"); // 로그인 성공 시 메인 페이지 이동
+            session.setAttribute("member", member);// 로그인 정보 저장           
+            if(member.getAuth()==1) {
+            	response.sendRedirect("/frontWeb/project/JanJan/Admin.jsp"); // 로그인 성공 시 메인 페이지 이동
+            } else if(member.getAuth()==0){
+            	response.sendRedirect("index.jsp");
+            }
         } else {
             // 로그인 실패
             rs = "아이디와 패스워드를 확인해주세요.";

@@ -3,8 +3,6 @@
 	import="project.JanJan.VO.Snack"
 	import="project.JanJan.DAO.SnackDao" 
 	import="java.util.*"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>   	
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +13,6 @@
 <link rel="stylesheet" href="./css/store.css">
 <link rel="stylesheet" href="./css/reset.css">
 <link rel="stylesheet" href="./css/global.css">
-<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <title>잔잔</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
@@ -37,15 +34,6 @@ function filter() {
 	var page = "janjan_storedata02.jsp?filter-price="+filter_price+"&filter-type="+filter_type
 	listObj.innerHTML = getSync(page)
 	
-}
-function warning(check){
-	if(check==''){
-		if(confirm("로그인이 필요합니다. 로그인 하시겠습니까?")){
-			location.href="login.jsp"
-		}
-	}else{
-		location.href="bag.jsp"
-	}
 }
 </script>
 </head>
@@ -69,9 +57,8 @@ SnackDao dao = new SnackDao();
 					<div class="gnbR">
 						<ul>
 							<li><a href="login.jsp">로그인/회원가입</a></li>
-							<c:set var="mem" value="${member}"/>
-							<li><img src="./img/bag.png" onclick="warning('${mem.id}')"
-									class="bag"></li>
+							<li><a href="bag.jsp"><img src="./img/bag.png"
+									class="bag"></a></li>
 						</ul>
 					</div>
 				</div>
@@ -134,7 +121,7 @@ SnackDao dao = new SnackDao();
 					<div id="prdList"
 						class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
 						<%
-						for (Snack s : dao.getAllList_s()) { 
+						for (Snack s : dao.getAllList_s()) {
 							String s_name = s.getSnack_name();
 							if (s.getSale_YN().equals("N")) {
 
@@ -151,7 +138,7 @@ SnackDao dao = new SnackDao();
 										<h5 class="fw-bolder" id = "s_name" name = "s_name">
 										<%=s.getSnack_name()%></h5>
 										<!-- Product price-->
-										<%=s.getSnack_price()%>원
+										<%=String.format("%,d",s.getSnack_price())%>원
 										<p class="text-black-50 p-1"><%=s.getSnack_des()%></p>
 									</div>
 								</div>
@@ -184,8 +171,9 @@ SnackDao dao = new SnackDao();
 										<h5 class="fw-bolder" id = "s_name" name = "s_name">
 										<%=s.getSnack_name()%></h5>
 										<!-- Product price-->
-										<span class="text-muted text-decoration-line-through"><%=s.getSnack_price()%>원</span>
-										<%=(int) (s.getSnack_price() - (s.getSnack_price() * 0.2))%>원
+										<span class="text-muted text-decoration-line-through"><%=String.format("%,d",s.getSnack_price())%>원</span>
+										<%int pri =  (int) (s.getSnack_price() - (s.getSnack_price() * 0.2));%>
+										<%=String.format("%,d",pri)%>원
 										<p class="text-black-50 p-1"><%=s.getSnack_des()%></p>
 									</div>
 								</div>

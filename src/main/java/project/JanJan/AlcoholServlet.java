@@ -1,9 +1,9 @@
 package project.JanJan;
 
-
 import java.io.IOException;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,6 +14,7 @@ import project.JanJan.VO.Admin;
 /**
  * Servlet implementation class AlcoholServlet
  */
+@WebServlet("/AlcoholServlet")
 public class AlcoholServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -30,7 +31,6 @@ public class AlcoholServlet extends HttpServlet {
 	 */
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		// ?title=매실원주&refno=6&ordno=1&val=매실원주
 		request.setCharacterEncoding("utf-8");
 		String title = request.getParameter("title");
 		String refno = request.getParameter("refno");
@@ -50,7 +50,6 @@ public class AlcoholServlet extends HttpServlet {
 			prn = "Y";
 		}
 		response.getWriter().print(prn);
-		
 	}
 
 }

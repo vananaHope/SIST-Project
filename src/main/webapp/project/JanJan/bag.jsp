@@ -4,6 +4,8 @@
     import="project.JanJan.VO.*"
     import="java.util.List"
     %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>     
 <!DOCTYPE html>
 <html lang="kr">
 <head>
@@ -34,7 +36,12 @@ Member m = (Member)session.getAttribute("member");
                     </div>
                     <div class="gnbR">
                         <ul>
-                            <li><a href="login.jsp">로그인/회원가입</a></li>
+                            <c:set var="mem" value="${member}"/>
+                        	<c:set var="msg" value="로그인/회원가입"/>
+                        	<c:if test="${not empty mem}">
+                            	<c:set var="msg" value="${mem.name}님"/>
+                            </c:if>	
+                            <li><a href="login.jsp">${msg}</a></li>
                             <li><a href="bag.jsp"><img src="./img/bag.png" class="bag"></a></li>
                         </ul>
                     </div>
