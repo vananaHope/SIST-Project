@@ -1,4 +1,4 @@
-package project.JanJan;
+package project.JanJan.servlet;
 
 import java.io.IOException;
 

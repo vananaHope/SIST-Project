@@ -28,6 +28,11 @@ public class Admin {
 		this.prdno = prdno;
 	}
 
+	public Admin(int prdno) {
+		super();
+		this.prdno = prdno;
+	}
+
 	public String getTitle() {
 		return title;
 	}

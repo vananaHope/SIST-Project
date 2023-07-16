@@ -11,6 +11,17 @@
 <link rel="stylesheet" href="./css/reset.css">
 <link rel="stylesheet" href="./css/global.css">
 <link rel="stylesheet" href="./css/sub.css">
+<script>
+function warning(check){
+	if(check==''){
+		if(confirm("로그인이 필요합니다. 로그인 하시겠습니까?")){
+			location.href="login.jsp"
+		}
+	}else{
+		location.href="bag.jsp"
+	}
+}
+</script>
 <title>잔잔</title>
 </head>
 <body>
@@ -21,15 +32,21 @@
                 <div class="gnb">
                     <div class="gnbL">
                         <ul>
-                            <li><a href="index.html"><img src="./img/logo.png" class="logo"></a></li>
+                            <li><a href="index.jsp"><img src="./img/logo.png" class="logo"></a></li>
                             <li><a href="sub.html">구독</a></li>
                             <li><a href="store.jsp">스토어</a></li>
                         </ul>
                     </div>
                     <div class="gnbR">
                         <ul>
-                            <li><a href="login2.jps">로그인/회원가입</a></li>
-                            <li><a href="bag.jsp"><img src="./img/bag.png" class="bag"></a></li>
+                        	<c:set var="mem" value="${member}"/>
+                        	<c:set var="msg" value="로그인/회원가입"/>
+                        	<c:if test="${not empty mem}">
+                            	<c:set var="msg" value="${mem.name}님"/>
+                            </c:if>	
+                            <li><a href="login.jsp">${msg}</a></li>         
+                            <li><img src="./img/bag.png" onclick="warning('${mem.id}')"
+								class="bag"></li>
                         </ul>
                     </div>
                 </div>

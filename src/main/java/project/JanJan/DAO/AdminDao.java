@@ -107,5 +107,70 @@ public class AdminDao {
 	        DB.close(rs, pstmt, con);
 	    }	
 	}
+	public void updateAS(Admin upt) {
+		String sql="UPDATE PRD_CODE \r\n"
+				+ "	SET title = ?,\r\n"
+				+ "		   val = ?,\r\n"
+				+ "		   refno = ?,\r\n"
+				+ "		   ordno = ?\r\n"
+				+ "	WHERE PRDNO=?";
+		try {
+			con = DB.con();
+			// 자동 commit방지
+			con.setAutoCommit(false);
+			pstmt = con.prepareStatement(sql);
+	        pstmt.setString(1, upt.getTitle());
+	        pstmt.setString(2, upt.getVal());
+	        pstmt.setInt(3, upt.getRefno());
+	        pstmt.setInt(4, upt.getOrdno());
+	        pstmt.setInt(5, upt.getPrdno());
+			int isInsert = pstmt.executeUpdate();
+			if(isInsert == 1) {
+				con.commit();//입력시 확정
+				System.out.println("수정성공");
+			}
+		} catch (SQLException e) {
+			System.out.println("sql예외:"+e.getMessage());
+			try {
+				con.rollback();// 원복처리
+			} catch (SQLException e1) {
+				System.out.println("롤백예외:"+e1.getMessage());
+			}
+		} catch (Exception e) {
+			System.out.println("일반예외:"+e.getMessage());
+		} finally {
+			DB.close(rs, pstmt, con);
+		}
+		
+	}
+	public void deleteAS(int no) {
+		String sql="DELETE\r\n"
+				+ "FROM PRD_CODE\r\n"
+				+ "WHERE PRDNO = ?";
+		try {
+			con = DB.con();
+			// 자동 commit방지
+			con.setAutoCommit(false);
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, no);
+			int isInsert = pstmt.executeUpdate();
+			if(isInsert == 1) {
+				con.commit();//입력시 확정
+				System.out.println("삭제 성공");
+			}
+		} catch (SQLException e) {
+			System.out.println("sql예외:"+e.getMessage());
+			try {
+				con.rollback();// 원복처리
+			} catch (SQLException e1) {
+				System.out.println("롤백예외:"+e1.getMessage());
+			}
+		} catch (Exception e) {
+			System.out.println("일반예외:"+e.getMessage());
+		} finally {
+			DB.close(rs, pstmt, con);
+		}
+		
+	}
 	
 }

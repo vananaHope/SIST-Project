@@ -22,6 +22,11 @@ function warning(check){
 		location.href="bag.jsp"
 	}
 }
+function logout(){
+	if(confirm("로그아웃 하시겠습니까?")){
+		location.href='logout.jsp'
+	}
+}
 </script>
 </head>
 <body>
@@ -33,7 +38,7 @@ function warning(check){
                     <div class="gnbL">
                         <ul>
                             <li><a href="index.jsp"><img src="./img/logo.png" class="logo"></a></li>
-                            <li><a href="sub.html">구독</a></li>
+                            <li><a href="sub.jsp">구독</a></li>
                             <li><a href="store.jsp">스토어</a></li>
                         </ul>
                     </div>
@@ -44,7 +49,10 @@ function warning(check){
                         	<c:if test="${not empty mem}">
                             	<c:set var="msg" value="${mem.name}님"/>
                             </c:if>	
-                            <li><a href="login.jsp">${msg}</a></li>         
+                            <li><a href="login.jsp">${msg}</a></li>
+                            <c:if test="${not empty mem}">
+                            	<li onclick="logout()" style="cursor:pointer">로그아웃</li>
+                            </c:if>         
                             <li><img src="./img/bag.png" onclick="warning('${mem.id}')"
 								class="bag"></li>
                         </ul>
